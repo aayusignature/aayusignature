@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAYU SIGNATURE | Official Music Hub</title>
+    
+    <!-- Premium Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Premium Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- PWA Setup Linking -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#D4AF37">
+    
+    <!-- Styles Sheets -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        /* Home Page Custom Hero Styles */
+        .hero-section {
+            position: relative;
+            height: 75vh;
+            min-height: 500px;
+            background: #000;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+        }
+        .hero-overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to right, #050505f0, #05050580, transparent), 
+                        linear-gradient(to top, #050505, transparent);
+        }
+        .hero-content { position: relative; z-index: 10; max-width: 650px; }
+        .hero-content h1 { font-size: 3.2rem; margin: 15px 0 20px 0; line-height: 1.2; font-weight: 800; }
+        .badge-new { background: var(--gold-solid); color: #000; padding: 4px 10px; font-weight: 700; font-size: 0.75rem; border-radius: 4px; letter-spacing: 1px; }
+        .stat-box { text-align: center; }
+        .stat-box h3 { font-size: 1.8rem; margin: 5px 0; font-family: 'Cinzel', serif; }
+        .stat-box p { font-size: 0.85rem; color: var(--text-gray); }
+        .song-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 8px 8px 0 0; }
+        .loader-box { text-align: center; padding: 50px 0; grid-column: 1 / -1; }
+    </style>
+</head>
+<body>
+
+    <!-- Premium Glass Header -->
+    <nav class="navbar">
+        <div class="logo">AAYU <span class="text-gold">SIGNATURE</span></div>
+        <div class="nav-links">
+            <a href="index.html" class="active">🏠 Home</a>
+            <a href="songs.html">🎵 Songs</a>
+            <a href="videos.html">📺 Videos</a>
+            <a href="lyrics.html">📝 Lyrics</a>
+            <a href="about.html">👤 About</a>
+        </div>
+        <button id="install-pwa" class="btn-gold" style="display: none;"><i class="fas fa-download"></i> Install App</button>
+    </nav>
+
+    <!-- Bollywood Cinematic Hero Banner -->
+    <section class="hero-section" id="hero-bg">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <span class="badge-new">LATEST DROP</span>
+            <h1 id="hero-title" class="cinzel-font text-gold">Syncing...</h1>
+            <p id="hero-desc" style="color: var(--text-gray); margin-bottom: 25px;">Checking YouTube Data Channel for the fresh tracks...</p>
+            <a id="hero-link" href="#" target="_blank" class="btn-gold"><i class="fas fa-play"></i> Watch Official Video</a>
+        </div>
+    </section>
+
+    <!-- Real-time YouTube Channel Stats Hub -->
+    <section class="grid-3" style="margin-top: -40px; position: relative; z-index: 20;">
+        <div class="glass-card stat-box">
+            <i class="fas fa-users text-gold" style="font-size: 1.8rem;"></i>
+            <h3 id="stat-subs">--</h3>
+            <p>Subscribers</p>
+        </div>
+        <div class="glass-card stat-box">
+            <i class="fas fa-eye text-gold" style="font-size: 1.8rem;"></i>
+            <h3 id="stat-views">--</h3>
+            <p>Total Views</p>
+        </div>
+        <div class="glass-card stat-box">
+            <i class="fas fa-video text-gold" style="font-size: 1.8rem;"></i>
+            <h3 id="stat-count">--</h3>
+            <p>Total Releases</p>
+        </div>
+    </section>
+
+    <!-- Recent Uploads Section -->
+    <section class="section-padding">
+        <h2 class="section-title">Recently <span class="text-gold">Uploaded</span></h2>
+        <div id="home-songs-grid" class="grid-3">
+            <div class="loader-box text-gold">
+                <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                <p style="margin-top: 10px; color: #fff;">Building your premium vault...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Dynamic Premium Footer (Auto Configured from config.js in next steps) -->
+    <footer id="dynamic-footer"></footer>
+
+    <!-- Scripts Injection Sequence -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/pages/home.js"></script>
+</body>
+</html>
+
