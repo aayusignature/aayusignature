@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Updates | AAYU SIGNATURE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .news-wrapper { padding-top: 120px; width: 90%; max-width: 900px; margin: 0 auto; }
+        .news-card { margin-bottom: 25px; position: relative; }
+        .news-badge { position: absolute; top: 20px; right: 20px; background: var(--gold-solid); color: #000; font-weight: 700; font-size: 0.7rem; padding: 4px 10px; border-radius: 4px; }
+        .news-time { font-size: 0.8rem; color: var(--text-gray); margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">AAYU <span class="text-gold">SIGNATURE</span></div>
+        <div class="nav-links">
+            <a href="index.html">🏠 Home</a>
+            <a href="songs.html">🎵 Songs</a>
+            <a href="videos.html">📺 Videos</a>
+            <a href="lyrics.html">📝 Lyrics</a>
+            <a href="about.html">👤 About</a>
+        </div>
+    </nav>
+
+    <main class="news-wrapper">
+        <h1 class="cinzel-font text-gold" style="font-size: 2.3rem; text-align: center; margin-bottom: 40px;">News & Bulletin</h1>
+        
+        <div id="news-feed-container">
+            <div style="text-align: center; color: var(--gold-solid); padding: 50px 0;">
+                <i class="fas fa-circle-notch fa-spin fa-2x"></i>
+                <p style="margin-top: 10px; color: #fff;">Fetching channel announcements...</p>
+            </div>
+        </div>
+    </main>
+
+    <footer id="dynamic-footer"></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", async () => {
+            const footer = document.getElementById("dynamic-footer");
+            if(footer) footer.innerHTML = `<div class="glass-card" style="margin-top: 50px; padding: 30px; text-align: center; border-radius: 20px 20px 0 0;"><p style="font-size: 0.75rem; color: #444;">&copy; 2026 ${CONFIG.BRAND}. Bulletin Desk.</p></div>`;
+
+            const container = document.getElementById("news-feed-container");
+            const rawItems = await fetchLatestVideos(5); // Latest 5 uploads for feed
+
+            if (rawItems && rawItems.length > 0) {
+                container.innerHTML = "";
+                rawItems.forEach((item, index) => {
+                    const snip = item.snippet;
+                    const cardHTML = `
+                        <div class="glass-card news-card">
+                            ${index === 0 ? '<span class="news-badge">LATEST</span>' : ''}
+                            <div class="news-time"><i class="far fa-calendar-alt"></i> ${new Date(snip.publishedAt).toLocaleDateString()}</div>
+                            <h3 class="cinzel-font text-gold" style="font-size: 1.1rem; margin-bottom: 10px;">${snip.title}</h3>
+                            <p style="font-size: 0.9rem; color: #ccc; line-height: 1.7;">${snip.description.substring(0, 250)}...</p>
+                            <a href="song-details.html?id=${item.id.videoId}" class="btn-gold" style="display: inline-block; margin-top: 15px; text-decoration: none; font-size: 0.75rem; padding: 6px 15px;">Read More</a>
+                        </div>
+                    `;
+                    container.innerHTML += cardHTML;
+                });
+                gsap.from(".news-card", { y: 30, opacity: 0, duration: 0.5, stagger: 0.1 });
+            } else {
+                container.innerHTML = `<p style="text-align:center; color: var(--text-gray);">No updates available at the moment.</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
+
