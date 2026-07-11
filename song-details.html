@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Details | AAYU SIGNATURE</title>
+    
+    <!-- Premium Google Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .details-wrapper { padding-top: 120px; width: 90%; max-width: 1200px; margin: 0 auto; }
+        
+        /* Premium Responsive Player Box */
+        .video-player-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #000;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+        }
+        .video-player-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+
+        /* Split Screen Architecture */
+        .split-layout { display: grid; grid-template-columns: 2fr 1fr; gap: 40px; margin-top: 40px; }
+        
+        .lyrics-box { white-space: pre-line; line-height: 2; font-size: 1.05rem; letter-spacing: 0.5px; color: #e0e0e0; }
+        .meta-list { list-style: none; }
+        .meta-list li { padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; font-size: 0.9rem; }
+        
+        .toast-notify {
+            position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%) translateY(100px);
+            background: var(--gold-metallic); color: #000; font-weight: 700; padding: 12px 30px;
+            border-radius: 30px; z-index: 10000; transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.3);
+        }
+        .toast-notify.show { transform: translateX(-50%) translateY(0); }
+
+        @media (max-width: 992px) {
+            .split-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Premium Navbar -->
+    <nav class="navbar">
+        <div class="logo">AAYU <span class="text-gold">SIGNATURE</span></div>
+        <div class="nav-links">
+            <a href="index.html">🏠 Home</a>
+            <a href="songs.html">🎵 Songs</a>
+            <a href="videos.html">📺 Videos</a>
+            <a href="lyrics.html">📝 Lyrics</a>
+            <a href="about.html">👤 About</a>
+        </div>
+        <button id="install-pwa" class="btn-gold" style="display: none;"><i class="fas fa-download"></i> Install App</button>
+    </nav>
+
+    <!-- Main Content Stage -->
+    <main class="details-wrapper">
+        <!-- Cinema Screen -->
+        <div class="video-player-container">
+            <iframe id="cinema-frame" src="" allowfullscreen></iframe>
+        </div>
+
+        <!-- Dynamic Titles -->
+        <div style="margin-top: 25px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 20px;">
+            <div>
+                <h1 id="track-title" class="cinzel-font text-gold" style="font-size: 2rem;">Loading Master Track...</h1>
+                <p id="track-date" style="color: var(--text-gray); font-size: 0.85rem; margin-top: 5px;"></p>
+            </div>
+            <div style="display: flex; gap: 15px;">
+                <button id="btn-share-song" class="btn-gold" style="background: transparent; border: 1px solid var(--gold-solid); color: #fff;"><i class="fas fa-share-alt"></i> Share Link</button>
+                <button id="btn-copy-lyrics" class="btn-gold"><i class="fas fa-copy"></i> Copy Lyrics</button>
+            </div>
+        </div>
+
+        <!-- Split Grid (Lyrics vs Meta Specifications) -->
+        <div class="split-layout">
+            <!-- Left Panel: Lyrics Display -->
+            <div class="glass-card">
+                <h2 class="cinzel-font text-gold" style="font-size: 1.3rem; margin-bottom: 25px;"><i class="fas fa-file-alt"></i> Official Lyrics</h2>
+                <div id="lyrics-render-zone" class="lyrics-box">Fetching verified lyrics...</div>
+            </div>
+
+            <!-- Right Panel: YouTube Analytics & Credits -->
+            <div style="display: flex; flex-direction: column; gap: 30px;">
+                <div class="glass-card">
+                    <h3 class="cinzel-font text-gold" style="font-size: 1.1rem; margin-bottom: 15px;"><i class="fas fa-chart-bar"></i> Live Stats</h3>
+                    <ul class="meta-list">
+                        <li><span><i class="fas fa-eye"></i> Stream Views</span><strong id="meta-views">--</strong></li>
+                        <li><span><i class="fas fa-thumbs-up"></i> Appreciations</span><strong id="meta-likes">--</strong></li>
+                        <li><span><i class="fas fa-clock"></i> Duration</span><strong id="meta-duration">--</strong></li>
+                    </ul>
+                </div>
+
+                <div class="glass-card">
+                    <h3 class="cinzel-font text-gold" style="font-size: 1.1rem; margin-bottom: 15px;"><i class="fas fa-info-circle"></i> Description</h3>
+                    <p id="track-description" style="font-size: 0.85rem; color: var(--text-gray); max-height: 250px; overflow-y: auto; line-height: 1.7;"></p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Custom Micro Toast Notification -->
+    <div id="toast-bar" class="toast-notify">Copied securely to clipboard!</div>
+
+    <footer id="dynamic-footer"></footer>
+
+    <!-- Scripts Loading Lineup -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/pages/song-details.js"></script>
+</body>
+</html>
+
