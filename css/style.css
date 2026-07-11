@@ -1,0 +1,149 @@
+/* css/style.css */
+
+/* Luxury Metallic Design System Tokens */
+:root {
+    --bg-dark-core: #050505;
+    --bg-dark-card: #0c0c0c;
+    --gold-metallic: linear-gradient(135deg, #BF953F, #FCF6BA, #B38728, #FBF5B7);
+    --gold-solid: #D4AF37;
+    --gold-glow: rgba(212, 175, 55, 0.25);
+    --text-white: #ffffff;
+    --text-gray: #a0a0a0;
+    --text-muted: #555555;
+    
+    /* Ultra Glassmorphism Formulas */
+    --glass-background: rgba(255, 255, 255, 0.02);
+    --glass-border: rgba(255, 255, 255, 0.06);
+    --glass-blur: blur(16px);
+}
+
+/* Global Smooth Layout Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark-core);
+    color: var(--text-white);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* Typography styles */
+.cinzel-font {
+    font-family: 'Cinzel', serif;
+    letter-spacing: 2px;
+}
+
+.text-gold {
+    color: var(--gold-solid);
+    text-shadow: 0 0 12px var(--gold-glow);
+}
+
+/* Premium Navigation Frame */
+.navbar {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 28px;
+    z-index: 1000;
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 40px;
+}
+
+.logo {
+    font-family: 'Cinzel', serif;
+    font-weight: 800;
+    font-size: 1.2rem;
+}
+
+.nav-links a {
+    color: var(--text-gray);
+    text-decoration: none;
+    margin: 0 12px;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--gold-solid);
+}
+
+/* Premium Gold Buttons */
+.btn-gold {
+    background: var(--gold-metallic);
+    color: #000;
+    font-weight: 700;
+    border: none;
+    padding: 10px 24px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.btn-gold:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Grid Layout Engine */
+.grid-3 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+}
+
+/* Glass Cards UI Architecture */
+.glass-card {
+    background: var(--glass-background);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 24px;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease, transform 0.4s ease;
+}
+
+.glass-card:hover {
+    border-color: rgba(212, 175, 55, 0.4);
+    box-shadow: 0 12px 40px rgba(212, 175, 55, 0.08);
+    transform: translateY(-6px);
+}
+
+/* Mobile Responsiveness Rules */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* Mobile side-drawer handle will go here */
+    }
+    .section-title {
+        font-size: 1.8rem;
+    }
+}
+
