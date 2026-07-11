@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | AAYU SIGNATURE</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo">AAYU <span class="text-gold">SIGNATURE</span></div>
+        <div class="nav-links">
+            <a href="index.html">🏠 Home</a>
+            <a href="songs.html">🎵 Songs</a>
+            <a href="videos.html">📺 Videos</a>
+            <a href="lyrics.html">📝 Lyrics</a>
+            <a href="about.html">👤 About</a>
+        </div>
+    </nav>
+
+    <main style="padding-top: 140px; width: 90%; max-width: 600px; margin: 0 auto; text-align: center;">
+        <h1 class="cinzel-font text-gold" style="font-size: 2.3rem; margin-bottom: 15px;">Get In Touch</h1>
+        <p style="color: var(--text-gray); margin-bottom: 40px;">For business alliances, bookings, and sync licensing inquiries.</p>
+        
+        <div class="glass-card" style="padding: 40px 20px;">
+            <i class="fas fa-paper-plane text-gold" style="font-size: 2.5rem; margin-bottom: 20px;"></i>
+            <h3 class="cinzel-font" style="font-size: 1.2rem; margin-bottom: 10px;">Official Mail Desk</h3>
+            <p style="color: var(--text-gray); font-size: 0.95rem; margin-bottom: 25px;" id="contact-email-text">Loading...</p>
+            <a href="" id="contact-mail-btn" class="btn-gold" style="text-decoration: none; display: inline-block;">Launch Mail Client</a>
+        </div>
+    </main>
+
+    <script src="js/config.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            document.getElementById("contact-email-text").innerText = CONFIG.SOCIALS.EMAIL;
+            document.getElementById("contact-mail-btn").href = `mailto:${CONFIG.SOCIALS.EMAIL}`;
+        });
+    </script>
+</body>
+</html>
+
