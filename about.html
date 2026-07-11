@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Contact | AAYU SIGNATURE</title>
+    
+    <!-- Premium Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="stylesheet" href="css/style.css">
+    
+    <style>
+        .about-wrapper { padding-top: 120px; width: 90%; max-width: 1000px; margin: 0 auto; }
+        .profile-banner {
+            text-align: center; padding: 60px 20px; border-radius: 20px;
+            background: linear-gradient(180deg, rgba(214,175,55,0.05) 0%, transparent 100%);
+            border: 1px solid var(--glass-border); margin-bottom: 40px;
+        }
+        .story-section { line-height: 1.9; color: var(--text-gray); font-size: 1rem; margin-bottom: 30px; }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .contact-card { text-align: center; padding: 30px 20px; }
+        .contact-card i { font-size: 2rem; margin-bottom: 15px; }
+        .contact-card a { text-decoration: none; display: inline-block; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+    <!-- Premium Navbar -->
+    <nav class="navbar">
+        <div class="logo">AAYU <span class="text-gold">SIGNATURE</span></div>
+        <div class="nav-links">
+            <a href="index.html">🏠 Home</a>
+            <a href="songs.html">🎵 Songs</a>
+            <a href="videos.html">📺 Videos</a>
+            <a href="lyrics.html">📝 Lyrics</a>
+            <a href="about.html" class="active">👤 About</a>
+        </div>
+        <button id="install-pwa" class="btn-gold" style="display: none;"><i class="fas fa-download"></i> Install App</button>
+    </nav>
+
+    <!-- Main Bio Content -->
+    <main class="about-wrapper">
+        
+        <!-- Branding Identity Intro -->
+        <div class="profile-banner">
+            <h1 class="cinzel-font text-gold" style="font-size: 2.8rem; margin-bottom: 10px;">AAYU SIGNATURE</h1>
+            <p style="letter-spacing: 2px; font-size: 0.85rem; color: #fff;">THE CINEMATIC SOUND EXPERIMENT</p>
+        </div>
+
+        <!-- Biography Screen -->
+        <section class="glass-card" style="margin-bottom: 40px;">
+            <h2 class="cinzel-font text-gold" style="font-size: 1.3rem; margin-bottom: 20px;"><i class="fas fa-feather-alt"></i> The Artist Story</h2>
+            <div class="story-section">
+                <p>Welcome to the official hub of <strong>AAYU SIGNATURE</strong>. Designed as a modern destination for high-fidelity music, conceptual audio tracking, and premium visual drops. This application serves as the single point of contact directly synchronized with the core audio distribution architecture.</p>
+                <br>
+                <p>By eliminating heavyweight background layers, this network provides lightning-fast performance directly feeding live stream arrays, release updates, and written poetry compositions directly to the listeners without intermediary restrictions.</p>
+            </div>
+        </section>
+
+        <!-- Dynamic Connect Interface Gateway -->
+        <section style="margin-bottom: 60px;">
+            <h2 class="cinzel-font text-gold" style="font-size: 1.3rem; text-align: center; margin-bottom: 25px;">Business Connect</h2>
+            <div class="contact-grid" id="connect-cards-container">
+                <!-- Javascript will map social handles seamlessly here -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Global Footer -->
+    <footer id="dynamic-footer"></footer>
+
+    <!-- Scripts Loading Lineup -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/pages/about.js"></script>
+</body>
+</html>
+
